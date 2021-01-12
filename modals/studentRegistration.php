@@ -36,7 +36,7 @@
 	      	<div class="modal-footer">
 	      		<span id="registerSuccessMsg"></span>
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary" onclick="addStudent()">Sign Up</button>
+		        <button type="button" class="btn btn-primary" id="signup" onclick="addStudent()">Sign Up</button>
 	      	</div>
 	    </div>
   	</div>

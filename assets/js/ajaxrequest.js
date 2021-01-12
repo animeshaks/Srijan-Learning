@@ -1,3 +1,33 @@
+$(document).ready(function() {
+	// Ajax call from Already exists email verification
+	$("#stuemail").on("keypress blur", function() {
+		var regEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+		var stuemail = $("#stuemail").val();
+		$.ajax({
+			url: 'api/addStudent.php',
+			method: 'POST',
+			data: {
+				checkemail: "checkemail",
+				stuemail: stuemail,
+			},
+			success: function(data){
+				console.log(data);
+				if(data != 0){
+					$("#statusMsgEmail").html("<small style='color:#ff0000;'>Email ID Already Exists!</small>");
+					$("#signup").attr("disabled", true);
+				}else if(!regEmail.test(stuemail)){
+					$("#statusMsgEmail").html("<small style='color:#ff0000;'>Please Enter Valid Email ID eg. example@mail.com!</small>");
+					$("#signup").attr("disabled", true);
+				}else if(data == 0){
+					$("#statusMsgEmail").html("<small style='color:green;'>There You Go!</small>");
+					$("#signup").attr("disabled", false);
+				}
+			},
+		});
+	});
+});
+
+
 function addStudent(){
 	var regEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
 	var stuname = $("#stuname").val();

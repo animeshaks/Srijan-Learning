@@ -1,6 +1,14 @@
 <?php
 	include_once '../td_includes.php';
 
+	//Checking Email Already Registered
+	if(isset($_POST['checkemail']) && isset($_POST['stuemail'])) {
+		$stuemail = $_POST['stuemail'];
+		$data = $srijan->check_email_registered($stuemail);
+		echo json_encode($data);
+	}
+
+	//Insert Student
 	if(isset($_POST['stusignup']) && isset($_POST['stuname']) && isset($_POST['stuemail']) && isset($_POST['stupass']) && isset($_POST['confirmstupass'])) {
 
 		$stuname = $_POST['stuname'];
@@ -20,7 +28,5 @@
 		}else{
 			echo json_encode("Password and confirm not equal");
 		}
-	}else{
-		echo json_encode("All fields are required");
 	}
 ?>
