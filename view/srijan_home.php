@@ -9,8 +9,20 @@
 	<div class="vid-content">
 		<h1 class="my-content">Welcome to $R!JAN LEARNING</h1>
 		<small class="my-content">Learn and Implement</small>
-		<br><br>
-		<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#StudentRegstrationModal">Get Started</a>
+		<br>
+		
+		<?php 
+			if(!isset($_SESSION['is_login'])){
+		?>
+		<a href="#" class="btn btn-danger mt-3" data-toggle="modal" data-target="#StudentRegstrationModal">Get Started</a>
+		<?php 
+			}else{
+		?>
+		<a href="#" class="btn btn-primary mt-3">My Profile</a>
+		<?php 
+			}
+		?>
+		
 	</div>
 </div>
 <!-- End Video Background -->
@@ -223,12 +235,7 @@
 </div>
 <!-- End About Us -->
 
-<!-- Forms -->
-<?php
-	include_once('modals/studentRegistration.php');
-	include_once('modals/studentLogin.php');
-	include_once('modals/adminLogin.php');
-?>
+
 
 
 

@@ -21,9 +21,10 @@
 	      		</form>
 	      	</div>
 	      	<div class="modal-footer">
+	      		<small id="statusLogMsgAdmin"></small>
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-		        <button type="button" class="btn btn-primary" id="adminLoginBtn">Login</button>
+		        <button type="button" class="btn btn-primary" id="adminLoginBtn" onclick="checkAdminLogin()">Login</button>
 	      	</div>
 	    </div>
   	</div>
-</div>
+</div> 

@@ -10,10 +10,19 @@
                 <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">Home</a></li>
                 <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>courses" class="nav-link">Courses</a></li>
                 <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>payment-status" class="nav-link">Payment Status</a></li>
+                <?php
+                    if(isset($_SESSION['is_login'])) {
+                ?>
                 <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">My Profile</a></li>
-                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">Logout</a></li>
+                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>logout" class="nav-link">Logout</a></li>
+                <?php  
+                    }else{
+                ?>
                 <li class="nav-item custom-nav-item"><a href="#" data-toggle="modal" data-target="#StudentLoginModal" class="nav-link">Login</a></li>
                 <li class="nav-item custom-nav-item"><a href="#" data-toggle="modal" data-target="#StudentRegstrationModal" class="nav-link">Sign Up</a></li>
+                <?php  
+                    }
+                ?>
                 <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">Testimonial</a></li>
                 <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">Contact</a></li>
             </ul>

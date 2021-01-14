@@ -1,5 +1,5 @@
 <?php
-	include_once '../td_includes.php';
+	include_once '../includes.php';
 
 	//Checking Email Already Registered
 	if(isset($_POST['checkemail']) && isset($_POST['stuemail'])) {
@@ -20,7 +20,9 @@
 			$pass = md5($stupass);
 			$data = $srijan->addStudent($stuname, $stuemail, $pass);
 			if($data){
-				echo json_encode("Ok");
+				$data1 = $srijan->addUser($stuname, $stuemail, $pass);
+				if($data1)
+					echo json_encode("Ok");
 			}else{
 				echo json_encode("Failed");
 			}

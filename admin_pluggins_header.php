@@ -8,6 +8,4 @@
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 
 	<!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>assets/css/style.css">
-
-    <link rel='stylesheet' href='<?php echo $base_url;?>assets/css/owl.carousel.min.css'>
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>assets/css/adminStyle.css">

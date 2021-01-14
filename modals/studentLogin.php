@@ -21,8 +21,9 @@
 	      		</form>
 	      	</div>
 	      	<div class="modal-footer">
+	      		<small id="statusLogMsg"></small>
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-		        <button type="button" class="btn btn-primary" id="stuLoginBtn">Login</button>
+		        <button type="button" class="btn btn-primary" id="stuLoginBtn" onclick="checkStuLogin()">Login</button>
 	      	</div>
 	    </div>
   	</div>
