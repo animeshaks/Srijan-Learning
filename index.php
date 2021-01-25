@@ -18,8 +18,15 @@
 <body>
 	<?php
 		if($usertype == "admin"){
+
 			if ($_GET['page']=="home" || $_GET['page']=="") {
 		    	include_once 'view/admin_dashboard.php';
+
+		    }elseif ($_GET['page']=="courses") {
+		   		include_once 'view/admin_courses.php';
+
+		    }elseif ($_GET['page']=="addCourse") {
+		   		include_once 'view/admin_addCourse.php';
 
 		    }elseif ($_GET['page']=="logout") {
 		   		include_once 'view/logout.php';

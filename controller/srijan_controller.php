@@ -59,5 +59,40 @@ class anisrijan{
 			return false;
 		}
 	}
+
+	public function addCourse($course_name, $course_desc, $course_author, $course_duration, $course_original_price, $course_price, $img_folder){
+		$course_name = mysqli_real_escape_string($this->db,$course_name);
+		$course_desc = mysqli_real_escape_string($this->db,$course_desc);
+		$course_author = mysqli_real_escape_string($this->db,$course_author);
+		$course_duration = mysqli_real_escape_string($this->db,$course_duration);
+		$course_original_price = mysqli_real_escape_string($this->db,$course_original_price);
+		$course_price = mysqli_real_escape_string($this->db,$course_price);
+		$img_folder = mysqli_real_escape_string($this->db,$img_folder);
+
+		$query = mysqli_query($this->db, "INSERT INTO course (course_name,course_desc,course_author,course_img,course_duration,course_price,course_original_price) VALUES ('$course_name','$course_desc','$course_author','$img_folder','$course_duration','$course_price','$course_original_price')") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function fetch_all_courses(){
+		$query = mysqli_query($this->db,"SELECT * FROM course") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
+	public function delete_a_courses($id){
+		$query = mysqli_query($this->db,"DELETE FROM course WHERE course_id = '$id'") or die(mysqli_error($this->db));
+		if($query)
+			return true;
+		else
+			return false;
+	}
 }
 ?>
