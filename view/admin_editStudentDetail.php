@@ -20,7 +20,7 @@
 			if($stu_pass == $stu_cpass){
 				$data = $srijan->update_student_detail_by_admin($sid, $stu_name, $stu_email, $stu_pass, $stu_occ);
 				if($data){
-					$data1 = $srijan->update_user_detail_by_admin($stu_name, $stu_email, $pass);
+					$data1 = $srijan->update_user_detail_by_admin($stu_name, $stu_email, $stu_pass);
 					if($data1){
 						$msg = '<div class="alert alert-success col-sm-6 ml-5 mt-2">Student Details Updated Successfully.</div>';
 					}else{

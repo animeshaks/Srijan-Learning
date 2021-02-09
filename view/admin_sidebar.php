@@ -43,7 +43,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?php echo $base_url;?>">
+			<a class="nav-link" href="<?php echo $base_url;?>changePassword">
 				<i class="fas fa-key"></i>
 				Change Password
 			</a>

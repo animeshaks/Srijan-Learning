@@ -187,5 +187,16 @@ class anisrijan{
 			return false;
 		}
 	}
+
+	public function changeAdminPassword($admin_email, $pass){
+		$useremail = mysqli_real_escape_string($this->db,$admin_email);
+		$pass = mysqli_real_escape_string($this->db,$pass);
+		$query = mysqli_query($this->db, "UPDATE user SET user_pass = '$pass' WHERE user_email = '$useremail'") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 ?>
