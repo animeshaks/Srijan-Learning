@@ -19,7 +19,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?php echo $base_url;?>">
+			<a class="nav-link" href="<?php echo $base_url;?>students">
 				<i class="fas fa-users"></i>
 				Students
 			</a>

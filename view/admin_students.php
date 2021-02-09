@@ -1,9 +1,9 @@
 <?php
-include_once 'admin_header.php';
+	include_once 'admin_header.php';
 ?>
 
 <?php
-	$data=$srijan->fetch_all_courses();
+	$data=$srijan->fetch_all_students();
 ?>
 
 
@@ -16,13 +16,13 @@ include_once 'admin_header.php';
 		</nav>
 		<div class="col-sm-9 mt-5">
 			<!-- Table -->
-			<p class="bg-dark text-white p-2">List Of Courses</p>
+			<p class="bg-dark text-white p-2">List Of Students</p>
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">Course ID</th>
+						<th scope="col">Student ID</th>
 						<th scope="col">Name</th>
-						<th scope="col">Author</th>
+						<th scope="col">E-mail</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
@@ -30,18 +30,18 @@ include_once 'admin_header.php';
 					<?php foreach ($data as $key) {
 						echo '
 							<tr>
-								<th scope="row">'.$key["course_id"].'</th>
-								<td>'.$key["course_name"].'</td>
-								<td>'.$key["course_author"].'</td>
+								<th scope="row">'.$key["stu_id"].'</th>
+								<td>'.$key["stu_name"].'</td>
+								<td>'.$key["stu_email"].'</td>
 								<td>
-									<form action="editCourse" method="POST" class="d-inline">
-										<input type="hidden" value='.$key["course_id"].' name="id">
+									<form action="editStudentDetail" method="POST" class="d-inline">
+										<input type="hidden" value='.$key["stu_id"].' name="id">
 										<button type="submit" class="btn btn-info mr-3" name="view" value="View">
 											<i class="fas fa-pen"></i>
 										</button>
 									</form>
 									<form action="" method="POST" class="d-inline">
-										<input type="hidden" value='.$key["course_id"].' name="id">
+										<input type="hidden" value='.$key["stu_email"].' name="stu_email">
 										<button type="submit" class="btn btn-secondary" name="delete" value="Delete">
 											<i class="far fa-trash-alt"></i>
 										</button>
@@ -56,7 +56,7 @@ include_once 'admin_header.php';
 		</div>
 	</div>
 	<div>
-		<a class="btn btn-danger box" href="<?php echo $base_url;?>addCourse">
+		<a class="btn btn-danger box" href="<?php echo $base_url;?>addNewStudent">
 			<i class="fas fa-plus fa-2x"></i>
 		</a>
 	</div>
@@ -65,7 +65,7 @@ include_once 'admin_header.php';
 
 <?php
 	if(isset($_REQUEST['delete'])){
-		$data1=$srijan->delete_a_course($_REQUEST['id']);
+		$data1=$srijan->delete_a_student($_REQUEST['stu_email']);
 		if($data1){
 			echo '<meta http-equiv="refresh" content="300" />';
 		}else{

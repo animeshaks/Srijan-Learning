@@ -28,6 +28,18 @@
 		    }elseif ($_GET['page']=="addCourse") {
 		   		include_once 'view/admin_addCourse.php';
 
+		    }elseif ($_GET['page']=="editCourse") {
+		   		include_once 'view/admin_editCourse.php';
+
+		    }elseif ($_GET['page']=="students") {
+		   		include_once 'view/admin_students.php';
+
+		    }elseif ($_GET['page']=="addNewStudent") {
+		   		include_once 'view/admin_addNewStudent.php';
+
+		    }elseif ($_GET['page']=="editStudentDetail") {
+		   		include_once 'view/admin_editStudentDetail.php';
+
 		    }elseif ($_GET['page']=="logout") {
 		   		include_once 'view/logout.php';
 

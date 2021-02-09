@@ -87,12 +87,105 @@ class anisrijan{
 		}
 	}
 
-	public function delete_a_courses($id){
+	public function fetch_a_course_by_id($id){
+		$query = mysqli_query($this->db,"SELECT * FROM course WHERE course_id='$id'") or die(mysqli_error($this->db));
+		if ($query) {
+			$row=mysqli_fetch_array($query,MYSQLI_ASSOC);
+			return $row;
+		}
+	}
+
+	public function updateCourse($cid,$course_name, $course_desc, $course_author, $course_duration, $course_original_price, $course_price, $img_folder){
+		$course_name = mysqli_real_escape_string($this->db,$course_name);
+		$course_desc = mysqli_real_escape_string($this->db,$course_desc);
+		$course_author = mysqli_real_escape_string($this->db,$course_author);
+		$course_duration = mysqli_real_escape_string($this->db,$course_duration);
+		$course_original_price = mysqli_real_escape_string($this->db,$course_original_price);
+		$course_price = mysqli_real_escape_string($this->db,$course_price);
+		$img_folder = mysqli_real_escape_string($this->db,$img_folder);
+
+		$query = mysqli_query($this->db, "UPDATE course SET course_name = '$course_name', course_desc = '$course_desc' , course_author = '$course_author' , course_img = '$img_folder', course_duration = '$course_duration', course_price = '$course_price' , course_original_price = '$course_original_price' WHERE course_id = '$cid'") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function delete_a_course($id){
 		$query = mysqli_query($this->db,"DELETE FROM course WHERE course_id = '$id'") or die(mysqli_error($this->db));
 		if($query)
 			return true;
 		else
 			return false;
+	}
+
+	public function fetch_all_students(){
+		$query = mysqli_query($this->db,"SELECT * FROM student") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
+	public function delete_a_student($stu_email){
+		$query1 = mysqli_query($this->db,"DELETE FROM student WHERE stu_email = '$stu_email'") or die(mysqli_error($this->db));
+		$query2 = mysqli_query($this->db,"DELETE FROM user WHERE user_email = '$stu_email'") or die(mysqli_error($this->db));
+		if($query1 && $query2)
+			return true;
+		else
+			return false;
+	}
+
+	public function addStudentByAdmin($stuname, $stuemail, $pass, $stu_occ){
+		$stuname = mysqli_real_escape_string($this->db,$stuname);
+		$stuemail = mysqli_real_escape_string($this->db,$stuemail);
+		$pass = mysqli_real_escape_string($this->db,$pass);
+		$stu_occ = mysqli_real_escape_string($this->db,$stu_occ);
+
+		$query = mysqli_query($this->db, "INSERT INTO student (stu_name,stu_email,stu_pass,stu_occ) VALUES ('$stuname','$stuemail','$pass','$stu_occ')") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function fetch_a_student_by_id($id){
+		$query = mysqli_query($this->db,"SELECT * FROM student WHERE stu_id='$id'") or die(mysqli_error($this->db));
+		if ($query) {
+			$row=mysqli_fetch_array($query,MYSQLI_ASSOC);
+			return $row;
+		}
+	}
+
+	public function update_student_detail_by_admin($sid, $stu_name, $stu_email, $stu_pass, $stu_occ){
+		$stu_name = mysqli_real_escape_string($this->db,$stu_name);
+		$stu_email = mysqli_real_escape_string($this->db,$stu_email);
+		$stu_pass = mysqli_real_escape_string($this->db,$stu_pass);
+		$stu_occ = mysqli_real_escape_string($this->db,$stu_occ);
+
+		$query = mysqli_query($this->db, "UPDATE student SET stu_name = '$stu_name', stu_pass = '$stu_pass', stu_occ = '$stu_occ' WHERE stu_id = '$sid'") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function update_user_detail_by_admin($stu_name, $stu_email, $stu_pass){
+		$username = mysqli_real_escape_string($this->db,$stu_name);
+		$useremail = mysqli_real_escape_string($this->db,$stu_email);
+		$pass = mysqli_real_escape_string($this->db,$stu_pass);
+
+		$query = mysqli_query($this->db, "UPDATE user SET user_name = '$username',user_pass = '$pass' WHERE user_email = '$useremail'") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
 ?>
