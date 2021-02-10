@@ -198,5 +198,79 @@ class anisrijan{
 			return false;
 		}
 	}
+
+	public function fetch_all_course_id(){
+		$query = mysqli_query($this->db,"SELECT course_id FROM course") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
+	public function fetch_course_by_id($id){
+		$query = mysqli_query($this->db,"SELECT * FROM course WHERE course_id='$id'") or die(mysqli_error($this->db));
+		if ($query) {
+			$data=mysqli_fetch_array($query,MYSQLI_ASSOC);
+			return $data;
+		}
+	}
+
+	public function addlesson($lesson_name, $lesson_desc, $course_id, $course_name, $lesson_link){
+		$lesson_name = mysqli_real_escape_string($this->db,$lesson_name);
+		$lesson_desc = mysqli_real_escape_string($this->db,$lesson_desc);
+		$course_id = mysqli_real_escape_string($this->db,$course_id);
+		$course_name = mysqli_real_escape_string($this->db,$course_name);
+		$lesson_link = mysqli_real_escape_string($this->db,$lesson_link);
+
+		$query = mysqli_query($this->db, "INSERT INTO lesson (lesson_name,lesson_desc,lesson_link,course_id,course_name) VALUES ('$lesson_name','$lesson_desc','$lesson_link','$course_id','$course_name')") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function fetch_lessons_by_course_id($id){
+		$query = mysqli_query($this->db,"SELECT * FROM lesson WHERE course_id='$id'") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
+	public function delete_a_lesson($id){
+		$query = mysqli_query($this->db,"DELETE FROM lesson WHERE lesson_id = '$id'") or die(mysqli_error($this->db));
+		if($query)
+			return true;
+		else
+			return false;
+	}
+
+	public function fetch_lesson_by_id($id){
+		$query = mysqli_query($this->db,"SELECT * FROM lesson WHERE lesson_id='$id'") or die(mysqli_error($this->db));
+		if ($query) {
+			$data=mysqli_fetch_array($query,MYSQLI_ASSOC);
+			return $data;
+		}
+	}
+
+	public function updateLesson($lesson_name, $lesson_desc, $course_id, $course_name, $link_folder, $cid){
+		$course_name = mysqli_real_escape_string($this->db,$course_name);
+		$lesson_name = mysqli_real_escape_string($this->db,$lesson_name);
+		$lesson_desc = mysqli_real_escape_string($this->db,$lesson_desc);
+		$course_id = mysqli_real_escape_string($this->db,$course_id);
+		$link_folder = mysqli_real_escape_string($this->db,$link_folder);
+
+		$query = mysqli_query($this->db, "UPDATE lesson SET lesson_name = '$lesson_name', lesson_desc = '$lesson_desc' , course_name = '$course_name' , course_id = '$course_id', lesson_link = '$link_folder' WHERE lesson_id = '$cid'") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 ?>

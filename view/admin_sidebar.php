@@ -13,7 +13,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?php echo $base_url;?>">
+			<a class="nav-link" href="<?php echo $base_url;?>lessons">
 				<i class="fab fa-accessible-icon"></i>
 				Lessons
 			</a>

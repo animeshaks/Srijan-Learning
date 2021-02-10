@@ -40,6 +40,15 @@
 		    }elseif ($_GET['page']=="editStudentDetail") {
 		   		include_once 'view/admin_editStudentDetail.php';
 
+		    }elseif ($_GET['page']=="lessons") {
+		   		include_once 'view/admin_lessons.php';
+
+		    }elseif ($_GET['page']=="addLesson") {
+		   		include_once 'view/admin_addLesson.php';
+
+		    }elseif ($_GET['page']=="editLesson") {
+		   		include_once 'view/admin_editLesson.php';
+
 		    }elseif ($_GET['page']=="changePassword") {
 		   		include_once 'view/admin_changePassword.php';
 
