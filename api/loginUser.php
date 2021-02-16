@@ -9,7 +9,7 @@
 	if(!isset($_SESSION['is_admin_login']) && $_POST['action'] == "chk_admin_login"){
 		if(isset($_POST['adminLogEmail']) && isset($_POST['adminLogPass'])){
 			$adminLogEmail = $_POST['adminLogEmail'];
-			$adminLogPass = $_POST['adminLogPass'];
+			$adminLogPass = md5($_POST['adminLogPass']);
 
 			$data = $srijan->chkUserLogin($adminLogEmail, $adminLogPass);
 			if($data === 1){

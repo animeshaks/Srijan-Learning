@@ -37,7 +37,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?php echo $base_url;?>">
+			<a class="nav-link" href="<?php echo $base_url;?>feedback">
 				<i class="far fa-comments"></i>
 				Feedback
 			</a>

@@ -13,7 +13,7 @@
                 <?php
                     if(isset($_SESSION['is_login'])) {
                 ?>
-                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">My Profile</a></li>
+                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>student-profile" class="nav-link">My Profile</a></li>
                 <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>logout" class="nav-link">Logout</a></li>
                 <?php  
                     }else{

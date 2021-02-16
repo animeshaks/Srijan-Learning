@@ -52,10 +52,38 @@
 		    }elseif ($_GET['page']=="changePassword") {
 		   		include_once 'view/admin_changePassword.php';
 
+		    }elseif ($_GET['page']=="feedback") {
+		   		include_once 'view/admin_feedback.php';
+
 		    }elseif ($_GET['page']=="logout") {
 		   		include_once 'view/logout.php';
 
 		    }
+		}else if($usertype == 'student'){
+    
+	    	if ($_GET['page']=="home" || $_GET['page']=="") {
+	    		include_once 'header.php';
+		    	include_once 'view/srijan_home.php';
+		    	include_once 'footer.php';
+
+		    }elseif ($_GET['page']=="student-profile") {
+		   		include_once 'view/student_profile.php';
+
+		    }elseif ($_GET['page']=="student-feedback") {
+		   		include_once 'view/student_feedback.php';
+
+		    }elseif ($_GET['page']=="changePassword") {
+		   		include_once 'view/student_changePassword.php';
+
+		    }elseif ($_GET['page']=="logout") {
+		   		include_once 'view/logout.php';
+
+		    }
+		   	else{
+		   		include_once 'view/mvps_error_404.php';
+		    }
+
+		   	
 		}else{
 			include_once 'header.php';
     

@@ -18,7 +18,7 @@
 		<?php 
 			}else{
 		?>
-		<a href="#" class="btn btn-primary mt-3">My Profile</a>
+		<a href="<?php echo $base_url;?>student-profile" class="btn btn-primary mt-3">My Profile</a>
 		<?php 
 			}
 		?>
@@ -61,62 +61,37 @@
 <!-- Start Course Section -->
 <div class="container mt-5">
 	<h1 class="text-center">Popular Courses</h1>
+	<?php
+		$courses = $srijan->fetch_top_courses();
+	?>
 	<div class="row">
-		<div class="card-deck mt-4 col-md-4 col-sm-6 col-12">
-			<a href="#" class="btn" style="text-align: left;padding: 0px;margin: 0px;">
-				<div class="card">
-					<img src="<?php echo $base_url;?>assets/images/courseimg/test.jpg" height="250px" class="card-img-top" alt="Guitar" />
-					<div class="card-body">
-						<h5>Learn Guitar Easy Way</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec libero laoreet, placerat ligula quis, dapibus odio.</p>
+		<?php
+			foreach ($courses as $data) {	
+		?>
+			<div class="card-deck mt-4 col-md-4 col-sm-6 col-12">
+				<a href="#" class="btn" style="text-align: left;padding: 0px;margin: 0px;">
+					<div class="card">
+						<img src="<?php echo $data['course_img'];?>" height="250px" class="card-img-top" alt="Guitar" />
+						<div class="card-body">
+							<h5><?php echo $data['course_name'];?></h5>
+							<p><?php echo $data['course_desc'];?></p>
+						</div>
+						<div class="card-footer">
+							<p class="card-text d-inline">
+								Price : <small><del>&#8377 <?php echo $data['course_original_price'];?></del></small> <span class="font-weight-bolder">&#8377 <?php echo $data['course_price'];?></span>
+							</p>
+							<a class="btn btn-primary text-white font-weight-bolder float-right" href="<?php echo $base_url;?>course-details/<?php echo $data['course_id'];?>">Enroll</a>
+						</div>
 					</div>
-					<div class="card-footer">
-						<p class="card-text d-inline">
-							Price : <small><del>&#8377 2000</del></small> <span class="font-weight-bolder">&#8377 200</span>
-						</p>
-						<a class="btn btn-primary text-white font-weight-bolder float-right" href="<?php echo $base_url;?>course-details">Enroll</a>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="card-deck mt-4 col-md-4 col-sm-6 col-12">
-			<a href="#" class="btn" style="text-align: left;padding: 0px;margin: 0px;">
-				<div class="card">
-					<img src="<?php echo $base_url;?>assets/images/courseimg/test.jpg" height="250px" class="card-img-top" alt="Guitar" />
-					<div class="card-body">
-						<h5>Learn Guitar Easy Way</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec libero laoreet, placerat ligula quis, dapibus odio.</p>
-					</div>
-					<div class="card-footer">
-						<p class="card-text d-inline">
-							Price : <small><del>&#8377 2000</del></small> <span class="font-weight-bolder">&#8377 200</span>
-						</p>
-						<a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="card-deck mt-4 col-md-4 col-sm-6 col-12">
-			<a href="#" class="btn" style="text-align: left;padding: 0px;margin: 0px;">
-				<div class="card">
-					<img src="<?php echo $base_url;?>assets/images/courseimg/test.jpg" height="250px" class="card-img-top" alt="Guitar" />
-					<div class="card-body">
-						<h5>Learn Guitar Easy Way</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec libero laoreet, placerat ligula quis, dapibus odio.</p>
-					</div>
-					<div class="card-footer">
-						<p class="card-text d-inline">
-							Price : <small><del>&#8377 2000</del></small> <span class="font-weight-bolder">&#8377 200</span>
-						</p>
-						<a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
-					</div>
-				</div>
-			</a>
-		</div>
+				</a>
+			</div>
+		<?php
+			}
+		?>
 	</div>
 	
 	<div class="text-center m-2">
-		<a class="btn btn-danger btn-sm" href="#">View All Courses</a>
+		<a class="btn btn-danger btn-sm" href="<?php echo $base_url;?>courses">View All Courses</a>
 	</div>
 </div>
 <!-- End Course Section -->
@@ -130,42 +105,31 @@
 <!-- Start Testimonial -->
 <div class="gtco-testimonials" id="feedback">
 	<h2>Student's Feedback</h2>
+	<?php
+		$feedbacks = $srijan->fetch_all_home_feedback();
+	?>
 	<div class="owl-carousel owl-carousel1 owl-theme">
+		<?php
+			foreach ($feedbacks as $dat) {	
+		?>
 		<div>
-			<div class="card text-center"><img class="card-img-top" src="https://images.unsplash.com/photo-1572561300743-2dd367ed0c9a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=300" alt="">
+			<div class="card text-center"><img class="card-img-top" src="<?php echo $dat['stu_img'];?>" alt="">
 				<div class="card-body">
-					<h5>Ronne Galle <br />
-						<span> Project Manager </span>
+					<h5><?php echo $dat['stu_name'];?><br />
+						<span><?php echo $dat['stu_occ'];?></span>
 					</h5>
-					<p class="card-text">“ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat ” </p>
+					<p class="card-text">“ <?php echo $dat['f_content'];?> ” </p>
 				</div>
 			</div>
 		</div>
+		<?php
+			}
+		?>
 		<div>
 			<div class="card text-center"><img class="card-img-top" src="https://images.unsplash.com/photo-1588361035994-295e21daa761?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=301" alt="">
 				<div class="card-body">
 					<h5>Missy Limana<br />
 						<span> Engineer </span>
-					</h5>
-					<p class="card-text">“ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat ” </p>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div class="card text-center"><img class="card-img-top" src="https://images.unsplash.com/photo-1575377222312-dd1a63a51638?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=302&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=302" alt="">
-				<div class="card-body">
-					<h5>Martha Brown<br />
-						<span> Project Manager </span>
-					</h5>
-					<p class="card-text">“ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat ” </p>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div class="card text-center"><img class="card-img-top" src="https://images.unsplash.com/photo-1549836938-d278c5d46d20?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=303" alt="">
-				<div class="card-body">
-					<h5>Hanna Lisem<br />
-						<span> Project Manager </span>
 					</h5>
 					<p class="card-text">“ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat ” </p>
 				</div>

@@ -87,6 +87,16 @@ class anisrijan{
 		}
 	}
 
+	public function fetch_top_courses(){
+		$query = mysqli_query($this->db,"SELECT * FROM course LIMIT 6") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
 	public function fetch_a_course_by_id($id){
 		$query = mysqli_query($this->db,"SELECT * FROM course WHERE course_id='$id'") or die(mysqli_error($this->db));
 		if ($query) {
@@ -270,6 +280,95 @@ class anisrijan{
 			return true;
 		}else{
 			return false;
+		}
+	}
+
+	public function fetch_stu_detail_by_mail($stu_email){
+		$query = mysqli_query($this->db,"SELECT * FROM student WHERE stu_email='$stu_email'") or die(mysqli_error($this->db));
+		if ($query) {
+			$data=mysqli_fetch_array($query,MYSQLI_ASSOC);
+			if($data['stu_img']=="")
+				$data['stu_img'] = "assets/images/user_icon.png";
+			return $data;
+		}
+	}
+
+	public function update_student_details_by_student($stu_email, $stu_name,  $stu_mobile, $stu_occ, $img_folder){
+		$stu_name = mysqli_real_escape_string($this->db,$stu_name);
+		$stu_email = mysqli_real_escape_string($this->db,$stu_email);
+		$stu_mobile = mysqli_real_escape_string($this->db,$stu_mobile);
+		$stu_occ = mysqli_real_escape_string($this->db,$stu_occ);
+		$stu_img = mysqli_real_escape_string($this->db,$img_folder);
+
+		$query = mysqli_query($this->db, "UPDATE student SET stu_name = '$stu_name', stu_mobile = '$stu_mobile', stu_img = '$stu_img', stu_occ = '$stu_occ' WHERE stu_email = '$stu_email'") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function update_user_detail_by_student($stu_name, $stu_email){
+		$username = mysqli_real_escape_string($this->db,$stu_name);
+		$useremail = mysqli_real_escape_string($this->db,$stu_email);
+
+		$query = mysqli_query($this->db, "UPDATE user SET user_name = '$username' WHERE user_email = '$useremail'") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function add_student_feedback($stu_email, $f_content){
+		$stu_email = mysqli_real_escape_string($this->db,$stu_email);
+		$stu_feedback = mysqli_real_escape_string($this->db,$f_content);
+
+		$query = mysqli_query($this->db, "INSERT INTO feedback (f_content,stu_email) VALUES ('$stu_feedback','$stu_email')") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function changeStudentPassword($user_email, $pass){
+		$useremail = mysqli_real_escape_string($this->db,$user_email);
+		$pass = mysqli_real_escape_string($this->db,$pass);
+		$query1 = mysqli_query($this->db, "UPDATE user SET user_pass = '$pass' WHERE user_email = '$useremail'") or die(mysqli_error($this->db));
+		$query2 = mysqli_query($this->db, "UPDATE student SET stu_pass = '$pass' WHERE stu_email = '$useremail'") or die(mysqli_error($this->db));
+		if ($query1 && $query2) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function fetch_all_feedback(){
+		$query = mysqli_query($this->db,"SELECT * FROM feedback") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
+	public function delete_a_feedback($id){
+		$query = mysqli_query($this->db,"DELETE FROM feedback WHERE f_id = '$id'") or die(mysqli_error($this->db));
+		if($query)
+			return true;
+		else
+			return false;
+	}
+
+	public function fetch_all_home_feedback(){
+		$query = mysqli_query($this->db,"SELECT student.stu_name, student.stu_occ, student.stu_img, feedback.f_content FROM student LEFT JOIN feedback ON student.stu_email = feedback.stu_email") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
 		}
 	}
 }

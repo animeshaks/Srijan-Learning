@@ -55,6 +55,7 @@ include_once 'admin_header.php';
 			</form>
 
 			<?php
+				$data1=$srijan->fetch_lessons_by_course_id($_REQUEST['checkid']);
 				if(isset($result['course_id'])) {
 			?>
 
@@ -63,11 +64,6 @@ include_once 'admin_header.php';
 				| Course Name : <?php if (isset($result['course_name'])) {echo $result['course_name'];} ?>	
 			</p>
 
-			<?php		
-				}
-				$data1=$srijan->fetch_lessons_by_course_id($_REQUEST['checkid']);
-			?>
-			
 			<table class="table">
 				<thead>
 					<tr>
@@ -108,6 +104,12 @@ include_once 'admin_header.php';
 					
 				</tbody>
 			</table>
+
+			<?php		
+				}
+			?>
+			
+			
 		</div>
 	</div>
 	<?php
