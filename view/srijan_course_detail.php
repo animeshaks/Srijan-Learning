@@ -27,7 +27,7 @@
 					<p class="card-text d-inline">Price : <small><del>&#8377; <?php echo $course_detail['course_original_price'];?></del></small>
 						<span class="font-weight-bold">&#8377; <?php echo $course_detail['course_price'];?></span>
 					</p>
-					<input type="hidden" value="'$course_detail['course_price']'" name="course_price">
+					<input type="hidden" value="<?php echo $course_detail['course_price']?>" name="course_price">
 					<button type="submit" class="btn btn-primary text-white float-right" name="buy">Buy Now</button>
 				</form>
 			</div>

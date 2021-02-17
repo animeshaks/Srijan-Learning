@@ -371,5 +371,24 @@ class anisrijan{
 			return $data;
 		}
 	}
+
+	public function add_new_course_order($order_id,$stu_email,$course_id,$status,$respmsg,$amount,$date){
+		$query = mysqli_query($this->db, "INSERT INTO courseorder (order_id, stu_email, course_id, status, respmsg, amount, order_date) VALUES ('$order_id','$stu_email','$course_id','$status','$respmsg','$amount','$date')") or die(mysqli_error($this->db));
+		if ($query) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function fetch_all_purchased_courses($stu_email){
+		$query = mysqli_query($this->db,"SELECT co.order_id, c.course_id, c.course_name, c.course_duration, c.course_desc, c.course_img, c.course_author, c.course_original_price, c.course_price FROM courseorder AS co JOIN course AS c ON c.course_id = co.course_id WHERE co.stu_email = '$stu_email'") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
 }
 ?>

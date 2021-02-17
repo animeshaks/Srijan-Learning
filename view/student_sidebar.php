@@ -8,7 +8,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?php echo $base_url;?>">
+			<a class="nav-link" href="<?php echo $base_url;?>my-courses">
 				<i class="fab fa-accessible-icon"></i>
 				My Course
 			</a>

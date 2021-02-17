@@ -66,6 +66,29 @@
 		    	include_once 'view/srijan_home.php';
 		    	include_once 'footer.php';
 
+		    }elseif ($_GET['page']=="checkout") {
+		    	include_once 'header.php';
+		   		include_once 'view/payment_checkout.php';
+		   		include_once 'footer.php';
+
+		    }elseif ($_GET['page']=="payment-page-redirect") {
+		   		include_once 'PaytmKit/pgRedirect.php';
+
+		    }elseif ($_GET['page']=="payment-page-response") {
+		   		include_once 'PaytmKit/pgResponse.php';
+
+		    }elseif ($_GET['page']=="courses") {
+		   		include_once 'view/srijan_all_courses.php';
+
+		    }elseif ($_GET['page']=="my-courses") {
+		   		include_once 'view/student_all_courses.php';
+
+		    }elseif ($_GET['page']=="watch-course") {
+		   		include_once 'view/student_watch_course.php';
+
+		    }elseif ($_GET['page']=="course-details") {
+		   		include_once 'view/srijan_course_detail.php';
+
 		    }elseif ($_GET['page']=="student-profile") {
 		   		include_once 'view/student_profile.php';
 
@@ -98,6 +121,12 @@
 
 		    }elseif ($_GET['page']=="course-details") {
 		   		include_once 'view/srijan_course_detail.php';
+
+		    }elseif ($_GET['page']=="payment-page-response") {
+		   		include_once 'PaytmKit/pgResponse.php';
+
+		    }elseif ($_GET['page']=="checkout") {
+		   		include_once 'view/srijan_login_or_signup.php';
 
 		    }elseif ($_GET['page']=="logout") {
 		   		include_once 'view/logout.php';
