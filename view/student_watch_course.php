@@ -25,7 +25,7 @@
 			</ul>
 		</div>
 		<div class="col-sm-8">
-			<video id="videoarea" src="" class="mt-5 w-75 ml-2" controls=""></video>
+			<video id="videoarea" src="" class="mt-5 w-75 ml-2" controls></video>
 		</div>
 	</div>
 </div>
