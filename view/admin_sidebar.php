@@ -25,13 +25,13 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?php echo $base_url;?>">
+			<a class="nav-link" href="<?php echo $base_url;?>sell-report">
 				<i class="fas fa-table"></i>
 				Sell Report
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?php echo $base_url;?>">
+			<a class="nav-link" href="<?php echo $base_url;?>payment-status">
 				<i class="fas fa-money-check-alt"></i>
 				Payment Status
 			</a>

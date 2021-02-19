@@ -23,8 +23,8 @@
                 <?php  
                     }
                 ?>
-                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">Testimonial</a></li>
-                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>" class="nav-link">Contact</a></li>
+                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>#feedback" class="nav-link">Testimonial</a></li>
+                <li class="nav-item custom-nav-item"><a href="<?php echo $base_url;?>#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </div>

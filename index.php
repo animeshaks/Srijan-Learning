@@ -17,7 +17,7 @@
 </head>
 <body>
 	<?php
-		if($usertype == "admin"){
+		if($usertype == 'admin'){
 
 			if ($_GET['page']=="home" || $_GET['page']=="") {
 		    	include_once 'view/admin_dashboard.php';
@@ -55,9 +55,17 @@
 		    }elseif ($_GET['page']=="feedback") {
 		   		include_once 'view/admin_feedback.php';
 
+		    }elseif ($_GET['page']=="payment-status") {
+		   		include_once 'view/admin_paymentStatus.php';
+
+		    }elseif ($_GET['page']=="sell-report") {
+		   		include_once 'view/admin_sellReport.php';
+
 		    }elseif ($_GET['page']=="logout") {
 		   		include_once 'view/logout.php';
 
+		    }else{
+		    	include_once 'view/srijan_error_404.php';
 		    }
 		}else if($usertype == 'student'){
     
@@ -101,11 +109,9 @@
 		    }elseif ($_GET['page']=="logout") {
 		   		include_once 'view/logout.php';
 
+		    }else{
+		    	include_once 'view/srijan_error_404.php';
 		    }
-		   	else{
-		   		include_once 'view/mvps_error_404.php';
-		    }
-
 		   	
 		}else{
 			include_once 'header.php';
@@ -131,9 +137,8 @@
 		    }elseif ($_GET['page']=="logout") {
 		   		include_once 'view/logout.php';
 
-		    }
-		   	else{
-		   		include_once 'view/mvps_error_404.php';
+		    }else{
+		    	include_once 'view/srijan_error_404.php';
 		    }
 
 		   	include_once 'footer.php';

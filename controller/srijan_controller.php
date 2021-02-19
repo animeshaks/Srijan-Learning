@@ -390,5 +390,49 @@ class anisrijan{
 			return $data;
 		}
 	}
+
+	public function fetch_sell_report($startdate,$enddate){
+		$query = mysqli_query($this->db,"SELECT * FROM courseorder WHERE order_date BETWEEN '$startdate' AND '$enddate'") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
+	public function fetch_all_course_order(){
+		$query = mysqli_query($this->db,"SELECT * FROM courseorder") or die(mysqli_error($this->db));
+		if ($query) {
+			while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+				$data[]=$row;
+			}
+			return $data;
+		}
+	}
+
+	public function delete_a_course_order($id){
+		$query = mysqli_query($this->db,"DELETE FROM courseorder WHERE co_id = '$id'") or die(mysqli_error($this->db));
+		if($query)
+			return true;
+		else
+			return false;
+	}
+
+	public function fetch_number_of_course(){
+		$query = mysqli_query($this->db, "SELECT * FROM course") or die(mysqli_error($this->db));
+		$count=mysqli_num_rows($query);
+		return $count;
+	}
+	public function fetch_number_of_student(){
+		$query = mysqli_query($this->db, "SELECT * FROM student") or die(mysqli_error($this->db));
+		$count=mysqli_num_rows($query);
+		return $count;
+	}
+	public function fetch_number_of_ordered_course(){
+		$query = mysqli_query($this->db, "SELECT * FROM courseorder") or die(mysqli_error($this->db));
+		$count=mysqli_num_rows($query);
+		return $count;
+	}
 }
 ?>
